@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.simplelist.ui.theme.SimpleListTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,8 +22,7 @@ class MainActivity : ComponentActivity() {
             SimpleListTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     GreetingText(
-                        message = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                        message = "Android", modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
@@ -33,7 +33,9 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingText(message: String, modifier: Modifier = Modifier) {
     Text(
-        text = message
+        text = message,
+        fontSize = 60.sp,
+        lineHeight = 116.sp
     )
 }
 
