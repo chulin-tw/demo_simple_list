@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -32,11 +33,23 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun GreetingText(message: String, modifier: Modifier = Modifier) {
-    Text(
-        text = message,
-        fontSize = 60.sp,
-        lineHeight = 116.sp
-    )
+    Column {
+        Text(
+            text = message,
+            fontSize = 40.sp,
+            lineHeight = 116.sp
+        )
+        Text(
+            text = "2.This is a Text.",
+            fontSize = 40.sp,
+            lineHeight = 116.sp
+        )
+        Text(
+            text = "3.This is a Text.",
+            fontSize = 40.sp,
+            lineHeight = 116.sp
+        )
+    }
 }
 
 
@@ -44,6 +57,7 @@ fun GreetingText(message: String, modifier: Modifier = Modifier) {
 @Composable
 fun TextPreview() {
     SimpleListTheme {
-        GreetingText("This is a Text.")
+        GreetingText("1.This is a Text.")
+
     }
 }
