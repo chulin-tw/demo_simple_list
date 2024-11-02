@@ -40,17 +40,20 @@ class MainActivity : ComponentActivity() {
 fun List(modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier.fillMaxSize()) {
         items(5) { index ->
-            ListItem("${index + 1}. This is text ${index + 1}.")
+            ListItem("Item ${index + 1}", " This is text ${index + 1}.")
         }
     }
 }
 
 @Composable
-fun ListItem(title: String, modifier: Modifier = Modifier) {
+fun ListItem(title: String, description: String, modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.androidparty)
     Column {
         Text(
             text = title
+        )
+        Text(
+            text = description
         )
         Image(
             painter = image,
