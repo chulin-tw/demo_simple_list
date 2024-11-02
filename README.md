@@ -1,6 +1,14 @@
 ## simpleList
 a simpleList to show text and pic for exercise
 
+## start
+```
+//run backend server
+cd backend
+npm install
+npm start
+```
+
 ### Tasking
 - [x] show text in screen
 - [x] show text list in screen
@@ -8,4 +16,4 @@ a simpleList to show text and pic for exercise
   - [x] show a pic in list item
   - [x] show title,description in list item
   
-- [ ] backend server
+- [x] backend server
