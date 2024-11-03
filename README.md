@@ -17,3 +17,8 @@ npm start
   - [x] show title,description in list item
   
 - [x] backend server
+
+- [ ] show data from backend server
+  - [x] use retrofit to get data
+  - [ ] add ListViewModel
+  - [ ] show data in page
