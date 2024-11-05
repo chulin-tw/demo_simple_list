@@ -18,7 +18,10 @@ npm start
   
 - [x] backend server
 
-- [ ] show data from backend server
+- [x] show data from backend server
   - [x] use retrofit to get data
   - [x] add ListViewModel
   - [x] show data in page
+  - [x] show pic in page
+
+- [ ] ui test

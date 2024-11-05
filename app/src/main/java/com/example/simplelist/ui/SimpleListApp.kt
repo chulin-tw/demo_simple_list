@@ -20,7 +20,8 @@ fun SimpleListApp(
         items(listItems){item ->
             ListItem(
                 title = item.title,
-                description = item.description
+                description = item.description,
+                image = item.image
             )
         }
     }
