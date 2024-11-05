@@ -21,4 +21,4 @@ npm start
 - [ ] show data from backend server
   - [x] use retrofit to get data
   - [x] add ListViewModel
-  - [ ] show data in page
+  - [x] show data in page
