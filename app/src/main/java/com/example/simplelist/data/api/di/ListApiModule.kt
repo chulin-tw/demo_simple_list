@@ -1,6 +1,7 @@
 package com.example.simplelist.data.api.di
 
 
+import com.example.simplelist.data.api.ListApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
-object listApiModule {
+object ListApiModule {
 
     @Provides
     fun provideRetrofit(): Retrofit {
