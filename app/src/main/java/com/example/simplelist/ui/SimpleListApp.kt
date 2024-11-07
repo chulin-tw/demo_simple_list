@@ -5,19 +5,19 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.simplelist.ui.screens.ListItem
-import com.example.simplelist.ui.screens.ListViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.simplelist.ui.list.ListItem
+import com.example.simplelist.ui.list.ListViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun SimpleListApp(
-    viewModel: ListViewModel = viewModel(),
+    viewModel: ListViewModel = hiltViewModel(),
     modifier: Modifier = Modifier
 ) {
-    val listItems =viewModel.listUiState
+    val listItems = viewModel.list.value
 
     LazyColumn(modifier = modifier.fillMaxSize()) {
-        items(listItems){item ->
+        items(listItems) { item ->
             ListItem(
                 title = item.title,
                 description = item.description,
@@ -25,4 +25,5 @@ fun SimpleListApp(
             )
         }
     }
+    viewModel.loadItems()
 }

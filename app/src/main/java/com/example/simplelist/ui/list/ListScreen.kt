@@ -1,4 +1,4 @@
-package com.example.simplelist.ui.screens
+package com.example.simplelist.ui.list
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text

@@ -1,4 +1,4 @@
-package com.example.simplelist.model
+package com.example.simplelist.data.model
 
 import kotlinx.serialization.Serializable
 
