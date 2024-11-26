@@ -44,12 +44,18 @@ fun SimpleListApp(
 //        }
 //    }
 //    viewModel.loadItems()
+    MomentsHeader()
+
+}
+
+@Composable
+private fun MomentsHeader(modifier: Modifier= Modifier) {
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(0.25f)
-        ){
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.default_background),
                 contentDescription = "default_background",
@@ -57,20 +63,21 @@ fun SimpleListApp(
                 modifier = Modifier
                     .fillMaxSize()
             )
-            Row (
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .offset(x = (-24).dp, y=(24).dp)
+                    .offset(x = (-24).dp, y = (24).dp)
                     .align(Alignment.BottomEnd),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
-            ){
+            ) {
                 Text(
                     text = "Lilian",
                     color = Color.White,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = modifier.padding(end = 8.dp))
+                    modifier = modifier.padding(end = 8.dp)
+                )
                 Image(
                     painter = painterResource(id = R.drawable.default_avatar),
                     contentDescription = "default_avatar",
@@ -83,5 +90,4 @@ fun SimpleListApp(
         }
 
     }
-
 }
