@@ -11,9 +11,9 @@ npm start
 
 ### Tasking
 - Kotllin + compose
-- [ ] show default user's info in page
+- [x] show default user's info in page
   - [x] show avatar,username,background
-  - [ ] adjust style
+  - [x] adjust style
 - [ ] adjust Mock data in backend to fit moment
 - [ ] Show only text moment
 - [ ] Show one pic moment
