@@ -14,7 +14,9 @@ npm start
 - [x] show default user's info in page
   - [x] show avatar,username,background
   - [x] adjust style
-- [ ] adjust Mock data in backend to fit moment
+- [x] adjust Mock data in backend to fit moment
+  - [x] add mock pic in repo
+  - [x] adjust json structure
 - [ ] Show only text moment
 - [ ] Show one pic moment
 - [ ] Show many pic moment
