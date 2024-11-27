@@ -1,4 +1,4 @@
-package com.example.simplelist
+package com.example.moments
 
 import org.junit.Test
 

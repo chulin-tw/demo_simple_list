@@ -1,4 +1,4 @@
-package com.example.simplelist
+package com.example.moments
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.example.simplelist.ui.SimpleListApp
-import com.example.simplelist.ui.theme.SimpleListTheme
+import com.example.moments.ui.MomentsApp
+import com.example.moments.ui.theme.MomentsScheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -19,9 +19,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            SimpleListTheme {
+            MomentsScheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SimpleListApp(
+                    MomentsApp(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

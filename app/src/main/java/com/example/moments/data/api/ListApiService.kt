@@ -1,6 +1,6 @@
-package com.example.simplelist.data.api
+package com.example.moments.data.api
 
-import com.example.simplelist.data.model.ListItem
+import com.example.moments.data.model.ListItem
 import retrofit2.http.GET
 
 interface ListApiService {

@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.simplelist"
+    namespace = "com.example.moments"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.simplelist"
+        applicationId = "com.example.moments"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

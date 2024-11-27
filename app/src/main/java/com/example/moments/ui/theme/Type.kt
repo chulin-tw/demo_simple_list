@@ -1,4 +1,4 @@
-package com.example.simplelist.ui.theme
+package com.example.moments.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

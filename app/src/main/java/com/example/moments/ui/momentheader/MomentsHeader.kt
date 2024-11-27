@@ -1,4 +1,4 @@
-package com.example.simplelist.ui.momentheader
+package com.example.moments.ui.momentheader
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -22,7 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.simplelist.R
+import com.example.moments.R
 
 @Composable
 fun MomentsHeader(modifier: Modifier = Modifier) {

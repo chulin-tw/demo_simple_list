@@ -1,4 +1,4 @@
-package com.example.simplelist.data.model
+package com.example.moments.data.model
 
 import kotlinx.serialization.Serializable
 

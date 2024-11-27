@@ -1,4 +1,4 @@
-package com.example.simplelist
+package com.example.moments
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

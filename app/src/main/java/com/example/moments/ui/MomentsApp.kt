@@ -1,13 +1,14 @@
-package com.example.simplelist.ui
+package com.example.moments.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.simplelist.ui.list.ListViewModel
-import com.example.simplelist.ui.momentheader.MomentsHeader
+import com.example.moments.ui.list.ListViewModel
+import com.example.moments.ui.listitem.ListItem
+import com.example.moments.ui.momentheader.MomentsHeader
 
 @Composable
-fun SimpleListApp(
+fun MomentsApp(
     viewModel: ListViewModel = hiltViewModel(), modifier: Modifier = Modifier
 ) {
 //    val listItems = viewModel.list.value

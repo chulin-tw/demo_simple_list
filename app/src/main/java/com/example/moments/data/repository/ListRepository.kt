@@ -1,7 +1,7 @@
-package com.example.simplelist.data.repository
+package com.example.moments.data.repository
 
-import com.example.simplelist.data.datasource.ListDataSource
-import com.example.simplelist.data.model.ListItem
+import com.example.moments.data.datasource.ListDataSource
+import com.example.moments.data.model.ListItem
 import javax.inject.Inject
 
 class ListRepository @Inject constructor(private val listDataSource: ListDataSource) {

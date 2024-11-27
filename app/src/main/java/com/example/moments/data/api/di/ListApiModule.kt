@@ -1,7 +1,7 @@
-package com.example.simplelist.data.api.di
+package com.example.moments.data.api.di
 
 
-import com.example.simplelist.data.api.ListApiService
+import com.example.moments.data.api.ListApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

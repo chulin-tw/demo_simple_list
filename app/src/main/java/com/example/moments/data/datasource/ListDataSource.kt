@@ -1,7 +1,7 @@
-package com.example.simplelist.data.datasource
+package com.example.moments.data.datasource
 
-import com.example.simplelist.data.api.ListApiService
-import com.example.simplelist.data.model.ListItem
+import com.example.moments.data.api.ListApiService
+import com.example.moments.data.model.ListItem
 import javax.inject.Inject
 
 class ListDataSource @Inject constructor(private val listApiService: ListApiService) {
