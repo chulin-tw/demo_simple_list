@@ -17,9 +17,13 @@ npm start
 - [x] adjust Mock data in backend to fit moment
   - [x] add mock pic in repo
   - [x] adjust json structure
-- [ ] Show only text moment
-- [ ] Show one pic moment
-- [ ] Show many pic moment
+- [ ] list item compose
+  - [ ] Show only text moment
+  - [ ] Show one pic moment
+  - [ ] Show many pic moment
+- [ ] list compose
+- [ ] show real data in page
+  - [x] update list item model
 - [ ] moment ' s action
   - [ ] like
   - [ ] Comment

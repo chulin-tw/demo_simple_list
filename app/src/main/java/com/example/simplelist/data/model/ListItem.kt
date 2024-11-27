@@ -2,9 +2,21 @@ package com.example.simplelist.data.model
 
 import kotlinx.serialization.Serializable
 
+
 @Serializable
 data class ListItem(
-    val image: String,
-    val title: String,
-    val description: String
+    val userInfo: UserInfo,
+    val momentInfo: MomentInfo
+)
+
+@Serializable
+data class UserInfo(
+    val username: String,
+    val avatar: String
+)
+
+@Serializable
+data class MomentInfo(
+    val text: String,
+    val picture: List<String>
 )
