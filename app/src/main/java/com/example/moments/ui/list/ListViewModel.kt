@@ -1,5 +1,6 @@
 package com.example.moments.ui.list
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -23,11 +24,15 @@ class ListViewModel @Inject constructor(private val listRepository: ListReposito
             val result = listRepository.getList()
             when {
                 result.isSuccess -> {
-                    _list.value = result.getOrNull() ?: emptyList()
+                    val data = result.getOrNull() ?: emptyList()
+                    _list.value = data
+                    Log.d("ListViewModel", "Data loaded: $data")
                 }
 
                 result.isFailure -> {
-                    _error.value = result.exceptionOrNull()?.message
+                    val errorMessage = result.exceptionOrNull()?.message
+                    _error.value = errorMessage
+                    Log.e("ListViewModel", "Error loading data: $errorMessage")
                 }
             }
         }

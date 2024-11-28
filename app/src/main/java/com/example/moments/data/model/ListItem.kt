@@ -18,5 +18,5 @@ data class UserInfo(
 @Serializable
 data class MomentInfo(
     val text: String,
-    val picture: List<String>
+    val picture: List<String>?
 )

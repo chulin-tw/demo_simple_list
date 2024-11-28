@@ -6,11 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import coil3.compose.AsyncImage
-import com.example.moments.ui.MomentsApp
-import com.example.moments.ui.theme.MomentsScheme
 
 @Composable
-fun ListItem(title: String, description: String, image: String, modifier: Modifier = Modifier) {
+fun MomentList(title: String, description: String, image: String, modifier: Modifier = Modifier) {
+    //TODO:update it
     Column {
         Text(
             text = title
@@ -28,8 +27,6 @@ fun ListItem(title: String, description: String, image: String, modifier: Modifi
 
 @Preview(showBackground = true)
 @Composable
-fun TextPreview() {
-    MomentsScheme {
-        MomentsApp()
-    }
+fun MomentPreview() {
+    //Todo: update it from MomentList
 }
