@@ -16,7 +16,7 @@ object ListApiModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3022")
+            .baseUrl("http://10.205.128.222:3022")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
