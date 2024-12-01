@@ -2,13 +2,16 @@ package com.example.moments.ui.listitem
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,12 +25,12 @@ private const val ROUND_CORNER_SHAPE = 8
 private const val INFO_OFFSET_X = 38
 private const val NAME_FONT_SIZE = 12
 
-
 @Composable
 fun ListItem(
     avatar: String,
     userName: String,
     text: String,
+    pictures: List<String>,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier) {
@@ -39,13 +42,6 @@ fun ListItem(
                     .size(AVATAR_SIZE.dp)
                     .clip(RoundedCornerShape(ROUND_CORNER_SHAPE.dp))
             )
-//            Image(
-//                painter = painterResource(id = R.drawable.default_avatar),
-//                contentDescription = "user_avatar",
-//                modifier = Modifier
-//                    .size(30.dp)
-//                    .clip(RoundedCornerShape(8.dp))
-//            )
         }
         Column(
             modifier = Modifier.offset(x = INFO_OFFSET_X.dp)
@@ -59,6 +55,20 @@ fun ListItem(
                 text = text,
                 fontSize = ROUND_CORNER_SHAPE.sp
             )
+            pictures.chunked(3).forEach { rowPictures ->
+                Row() {
+                    rowPictures.forEach { pic ->
+                        AsyncImage(
+                            model = pic,
+                            contentDescription = "user_pictures",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .size(120.dp)
+                                .padding(2.dp)
+                        )
+                    }
+                }
+            }
         }
     }
 
@@ -70,5 +80,12 @@ fun PreviewListItem() {
     ListItem(
         avatar = "http://localhost:3022/static/avatar/avatar_01.png",
         userName = "Lilian",
-        text = "test for only texts")
+        text = "test for only texts",
+        pictures = listOf(
+            "http://localhost:3022/static/avatar/avatar_01.png",
+            "http://localhost:3022/static/avatar/avatar_01.png",
+            "http://localhost:3022/static/avatar/avatar_01.png",
+            "http://localhost:3022/static/avatar/avatar_01.png",
+        )
+    )
 }

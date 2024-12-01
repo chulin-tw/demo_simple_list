@@ -29,6 +29,7 @@ fun MomentsScreen(
                     avatar = item.userInfo.avatar,
                     userName = item.userInfo.username,
                     text = item.momentInfo.text,
+                    pictures = item.momentInfo.picture
                 )
             }
         }
