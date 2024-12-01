@@ -25,13 +25,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.moments.R
 
+private const val HEADER_HEIGHT = 0.25f
+private const val NAME_FONT_SIZE = 24
+private const val INFO_OFFSET_X = -24
+private const val INFO_OFFSET_Y = 24
+private const val NAME_PADDING = 8
+private const val ROUND_CORNER_SHAPE = 8
+private const val AVATAR_SIZE = 90
+
 @Composable
 fun MomentsHeader(modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.25f)
+                .fillMaxHeight(HEADER_HEIGHT)
         ) {
             Image(
                 painter = painterResource(id = R.drawable.default_background),
@@ -42,7 +50,7 @@ fun MomentsHeader(modifier: Modifier = Modifier) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .offset(x = (-24).dp, y = (24).dp)
+                    .offset(x = INFO_OFFSET_X.dp, y = INFO_OFFSET_Y.dp)
                     .align(Alignment.BottomEnd),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
@@ -50,16 +58,16 @@ fun MomentsHeader(modifier: Modifier = Modifier) {
                 Text(
                     text = stringResource(R.string.default_user_name),
                     color = Color.White,
-                    fontSize = 24.sp,
+                    fontSize = NAME_FONT_SIZE.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = modifier.padding(end = 8.dp)
+                    modifier = modifier.padding(end = NAME_PADDING.dp)
                 )
                 Image(
                     painter = painterResource(id = R.drawable.default_avatar),
                     contentDescription = stringResource(R.string.default_avatar_description),
                     modifier = Modifier
-                        .size(90.dp)
-                        .clip(RoundedCornerShape(8.dp))
+                        .size(AVATAR_SIZE.dp)
+                        .clip(RoundedCornerShape(ROUND_CORNER_SHAPE.dp))
                 )
             }
         }

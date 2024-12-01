@@ -17,6 +17,12 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.moments.R
 
+private const val AVATAR_SIZE = 30
+private const val ROUND_CORNER_SHAPE = 8
+private const val INFO_OFFSET_X = 38
+private const val NAME_FONT_SIZE = 12
+
+
 @Composable
 fun ListItem(
     avatar: String,
@@ -30,8 +36,8 @@ fun ListItem(
                 model = avatar,
                 contentDescription = stringResource(R.string.list_item_user_avatar_description),
                 modifier = Modifier
-                    .size(30.dp)
-                    .clip(RoundedCornerShape(8.dp))
+                    .size(AVATAR_SIZE.dp)
+                    .clip(RoundedCornerShape(ROUND_CORNER_SHAPE.dp))
             )
 //            Image(
 //                painter = painterResource(id = R.drawable.default_avatar),
@@ -42,16 +48,16 @@ fun ListItem(
 //            )
         }
         Column(
-            modifier = Modifier.offset(x = 38.dp)
+            modifier = Modifier.offset(x = INFO_OFFSET_X.dp)
         ) {
             Text(
                 text = userName,
-                fontSize = 12.sp,
+                fontSize = NAME_FONT_SIZE.sp,
                 fontWeight = FontWeight.Bold,
             )
             Text(
                 text = text,
-                fontSize = 8.sp
+                fontSize = ROUND_CORNER_SHAPE.sp
             )
         }
     }
