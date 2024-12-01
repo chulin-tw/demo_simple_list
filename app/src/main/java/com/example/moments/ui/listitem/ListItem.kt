@@ -2,6 +2,7 @@ package com.example.moments.ui.listitem
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,7 +22,7 @@ import com.example.moments.R
 private const val AVATAR_SIZE = 30
 private const val ROUND_CORNER_SHAPE = 8
 private const val INFO_OFFSET_X = 38
-private const val NAME_FONT_SIZE = 12
+private const val FONT_SIZE = 12
 
 @Composable
 fun ListItem(
@@ -30,7 +32,7 @@ fun ListItem(
     pictures: List<String>,
     modifier: Modifier = Modifier
 ) {
-    Box(modifier = modifier) {
+    Box(modifier = modifier.fillMaxSize()) {
         Column {
             AsyncImage(
                 model = avatar,
@@ -41,16 +43,18 @@ fun ListItem(
             )
         }
         Column(
-            modifier = Modifier.offset(x = INFO_OFFSET_X.dp)
+            modifier = Modifier
+                .offset(x = INFO_OFFSET_X.dp)
         ) {
             Text(
                 text = userName,
-                fontSize = NAME_FONT_SIZE.sp,
+                fontSize = FONT_SIZE.sp,
                 fontWeight = FontWeight.Bold,
+                color = Color(0xFF326CB8)
             )
             Text(
                 text = text,
-                fontSize = ROUND_CORNER_SHAPE.sp
+                fontSize = FONT_SIZE.sp
             )
             ListItemRow(pictures)
         }
