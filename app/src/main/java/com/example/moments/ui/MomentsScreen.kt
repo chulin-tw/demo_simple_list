@@ -12,7 +12,7 @@ import com.example.moments.ui.listitem.ListItem
 import com.example.moments.ui.momentsheader.MomentsHeader
 
 @Composable
-fun MomentsApp(
+fun MomentsScreen(
     viewModel: ListViewModel = hiltViewModel(), modifier: Modifier = Modifier
 ) {
     val listItems = viewModel.list.value

@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.example.moments.ui.MomentsApp
+import com.example.moments.ui.MomentsScreen
 import com.example.moments.ui.theme.MomentsScheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MomentsScheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MomentsApp(
+                    MomentsScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
