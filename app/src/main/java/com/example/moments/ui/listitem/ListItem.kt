@@ -9,11 +9,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.example.moments.R
 
 @Composable
 fun ListItem(
@@ -26,15 +28,15 @@ fun ListItem(
         Column {
             AsyncImage(
                 model = avatar,
-                contentDescription = "user_avatar",
-                modifier = Modifier.Companion
+                contentDescription = stringResource(R.string.list_item_user_avatar_description),
+                modifier = Modifier
                     .size(30.dp)
                     .clip(RoundedCornerShape(8.dp))
             )
 //            Image(
 //                painter = painterResource(id = R.drawable.default_avatar),
 //                contentDescription = "user_avatar",
-//                modifier = Modifier.Companion
+//                modifier = Modifier
 //                    .size(30.dp)
 //                    .clip(RoundedCornerShape(8.dp))
 //            )
@@ -45,7 +47,7 @@ fun ListItem(
             Text(
                 text = userName,
                 fontSize = 12.sp,
-                fontWeight = FontWeight.Companion.Bold,
+                fontWeight = FontWeight.Bold,
             )
             Text(
                 text = text,
@@ -59,5 +61,8 @@ fun ListItem(
 @Preview(showBackground = true)
 @Composable
 fun PreviewListItem() {
-    ListItem(avatar = "http://localhost:3022/static/avatar/avatar_01.png", userName = "Lilian", text = "test for only texts")
+    ListItem(
+        avatar = "http://localhost:3022/static/avatar/avatar_01.png",
+        userName = "Lilian",
+        text = "test for only texts")
 }

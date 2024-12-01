@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.moments.ui.list.ListViewModel
 import com.example.moments.ui.listitem.ListItem
-import com.example.moments.ui.momentheader.MomentsHeader
+import com.example.moments.ui.momentsheader.MomentsHeader
 
 @Composable
 fun MomentsApp(

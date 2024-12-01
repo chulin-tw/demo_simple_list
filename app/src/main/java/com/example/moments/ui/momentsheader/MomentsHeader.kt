@@ -1,4 +1,4 @@
-package com.example.moments.ui.momentheader
+package com.example.moments.ui.momentsheader
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,36 +29,35 @@ import com.example.moments.R
 fun MomentsHeader(modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxSize()) {
         Box(
-            modifier = Modifier.Companion
+            modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(0.25f)
         ) {
             Image(
                 painter = painterResource(id = R.drawable.default_background),
-                contentDescription = "default_background",
-                contentScale = ContentScale.Companion.Crop,
-                modifier = Modifier.Companion
-                    .fillMaxSize()
+                contentDescription = stringResource(R.string.default_background_description),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
             )
             Row(
-                modifier = Modifier.Companion
+                modifier = Modifier
                     .fillMaxWidth()
                     .offset(x = (-24).dp, y = (24).dp)
-                    .align(Alignment.Companion.BottomEnd),
-                verticalAlignment = Alignment.Companion.CenterVertically,
+                    .align(Alignment.BottomEnd),
+                verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
             ) {
                 Text(
-                    text = "Lilian",
-                    color = Color.Companion.White,
+                    text = stringResource(R.string.default_user_name),
+                    color = Color.White,
                     fontSize = 24.sp,
-                    fontWeight = FontWeight.Companion.Bold,
+                    fontWeight = FontWeight.Bold,
                     modifier = modifier.padding(end = 8.dp)
                 )
                 Image(
                     painter = painterResource(id = R.drawable.default_avatar),
-                    contentDescription = "default_avatar",
-                    modifier = Modifier.Companion
+                    contentDescription = stringResource(R.string.default_avatar_description),
+                    modifier = Modifier
                         .size(90.dp)
                         .clip(RoundedCornerShape(8.dp))
                 )
