@@ -1,13 +1,19 @@
 package com.example.moments.ui.listitem
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -46,6 +52,7 @@ fun ListItem(
         Column(
             modifier = Modifier
                 .offset(x = INFO_OFFSET_X.dp)
+                .fillMaxWidth()
         ) {
             Text(
                 text = userName,
@@ -55,12 +62,49 @@ fun ListItem(
             )
             Text(
                 text = text,
-                fontSize = FONT_SIZE.sp
+                fontSize = FONT_SIZE.sp,
+                color = Color.Black
             )
             ListItemRow(pictures)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 32.dp, top = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "1小时前",
+                    fontSize = 12.sp
+                )
+                Box(
+                    modifier = Modifier
+                        .size(width = 30.dp, height = 18.dp)
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(Color(0xFFE5E5E5))
+                        .padding(4.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .size(4.dp)
+                                .clip(RoundedCornerShape(2.dp))
+                                .background(Color(0xFF5b6a92))
+                        )
+                        Box(
+                            modifier = Modifier
+                                .size(4.dp)
+                                .clip(RoundedCornerShape(2.dp))
+                                .background(Color(0xFF5b6a92))
+                        )
+                    }
+                }
+            }
         }
     }
-
 }
 
 private const val TEST_PIC = "http://localhost:3022/static/avatar/avatar_01.png"
