@@ -23,6 +23,7 @@ private const val AVATAR_SIZE = 30
 private const val ROUND_CORNER_SHAPE = 8
 private const val INFO_OFFSET_X = 38
 private const val FONT_SIZE = 12
+private const val USER_NAME_COLOR = 0xFF326CB8
 
 @Composable
 fun ListItem(
@@ -50,7 +51,7 @@ fun ListItem(
                 text = userName,
                 fontSize = FONT_SIZE.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF326CB8)
+                color = Color(USER_NAME_COLOR)
             )
             Text(
                 text = text,
@@ -62,18 +63,22 @@ fun ListItem(
 
 }
 
+private const val TEST_PIC = "http://localhost:3022/static/avatar/avatar_01.png"
+private const val TEST_USER_NAME = "Lilian"
+private const val TEST_TEXT = "test for only texts"
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewListItem() {
     ListItem(
-        avatar = "http://localhost:3022/static/avatar/avatar_01.png",
-        userName = "Lilian",
-        text = "test for only texts",
+        avatar = TEST_PIC,
+        userName = TEST_USER_NAME,
+        text = TEST_TEXT,
         pictures = listOf(
-            "http://localhost:3022/static/avatar/avatar_01.png",
-            "http://localhost:3022/static/avatar/avatar_01.png",
-            "http://localhost:3022/static/avatar/avatar_01.png",
-            "http://localhost:3022/static/avatar/avatar_01.png",
+            TEST_PIC,
+            TEST_PIC,
+            TEST_PIC,
+            TEST_PIC,
         )
     )
 }
