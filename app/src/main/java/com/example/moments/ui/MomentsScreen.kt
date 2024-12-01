@@ -18,7 +18,8 @@ import com.example.moments.ui.momentsheader.MomentsHeader
 
 @Composable
 fun MomentsScreen(
-    viewModel: ListViewModel = hiltViewModel(), modifier: Modifier = Modifier
+    viewModel: ListViewModel = hiltViewModel(),
+    modifier: Modifier = Modifier
 ) {
     val listItems = viewModel.list.value
     LaunchedEffect(Unit) {
@@ -33,7 +34,6 @@ fun MomentsScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
-                    horizontal = 20.dp,
                     vertical = 48.dp
                 )
         ) {
@@ -42,9 +42,12 @@ fun MomentsScreen(
                     avatar = item.userInfo.avatar,
                     userName = item.userInfo.username,
                     text = item.momentInfo.text,
-                    pictures = item.momentInfo.picture
+                    pictures = item.momentInfo.picture,
+                    modifier = Modifier.padding(
+                        horizontal = 20.dp,
+                        vertical = 8.dp
+                    )
                 )
-                //TODO: divider fill max width,use another way to add padding
                 HorizontalDivider(
                     modifier = Modifier
                         .fillMaxWidth()

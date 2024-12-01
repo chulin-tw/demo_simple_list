@@ -19,13 +19,10 @@ npm start
   - [x] adjust json structure
 - [x] update data from model->ds->vm->ui
 - [ ] list item compose
-  - [ ] Show only text moment
-  - [ ] Show one pic moment
-  - [ ] Show many pic moment
+  - [ ] bottom row
+    - [ ] time
+    - [ ] item
 - [ ] list compose
-- [ ] moment ' s action
-  - [ ] like
-  - [ ] Comment
 - [ ] Connect to former app
 
 
