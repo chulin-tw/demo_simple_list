@@ -13,7 +13,7 @@ import com.example.moments.ui.listitem.ListItem
 
 private const val LIST_VERTICAL_PADDING = 48
 private const val LIST_ITEM_HORIZONTAL_PADDING = 20
-private const val LIST_ITEM_VERTICAL_PADDING = 8
+private const val LIST_ITEM_VERTICAL_PADDING = 4
 private const val DIVIDER_THICKNESS = 0.5
 
 @Composable
