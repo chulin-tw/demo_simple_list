@@ -1,6 +1,8 @@
 package com.example.moments.ui
 
-import android.util.Log
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -16,23 +18,21 @@ fun MomentsScreen(
     viewModel: ListViewModel = hiltViewModel(), modifier: Modifier = Modifier
 ) {
     val listItems = viewModel.list.value
-    Log.d("BUU", "listitem:${listItems}")
     LaunchedEffect(Unit) {
         viewModel.loadItems()
     }
-
-    LazyColumn() {
-        items(listItems) { item ->
-            MomentsHeader()
-            ListItem(
-                avatar = item.userInfo.avatar,
-                userName = item.userInfo.username,
-                text = item.momentInfo.text,
-            )
+    Column(modifier = Modifier.fillMaxSize()) {
+        MomentsHeader()
+        LazyColumn(modifier = Modifier.fillMaxWidth()) {
+            items(listItems) { item ->
+                ListItem(
+                    avatar = item.userInfo.avatar,
+                    userName = item.userInfo.username,
+                    text = item.momentInfo.text,
+                )
+            }
         }
     }
-//    viewModel.loadItems()
-
 }
 
 

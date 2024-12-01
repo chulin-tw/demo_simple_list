@@ -36,7 +36,7 @@ private const val AVATAR_SIZE = 90
 
 @Composable
 fun MomentsHeader(modifier: Modifier = Modifier) {
-    Box(modifier = modifier.fillMaxSize()) {
+    Box(modifier = modifier.fillMaxWidth()) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -77,6 +77,6 @@ fun MomentsHeader(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-fun PreviewMomentsHeader(){
+fun PreviewMomentsHeader() {
     MomentsHeader()
 }

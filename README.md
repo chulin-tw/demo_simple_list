@@ -17,7 +17,7 @@ npm start
 - [x] adjust Mock data in backend to fit moment
   - [x] add mock pic in repo
   - [x] adjust json structure
-- [ ] update data from model->ds->vm->ui
+- [x] update data from model->ds->vm->ui
 - [ ] list item compose
   - [ ] Show only text moment
   - [ ] Show one pic moment
