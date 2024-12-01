@@ -4,7 +4,8 @@ const app = express();
 const PORT = 3022;
 
 app.use('/static', express.static(path.join(__dirname, 'public')));
-const serverDomain = `http://localhost:${PORT}`;
+const domain = "192.168.31.221"
+const serverDomain = `http://${domain}:${PORT}`;
 
 const data = [
     {
