@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,7 +25,6 @@ private const val AVATAR_SIZE = 30
 private const val ROUND_CORNER_SHAPE = 8
 private const val INFO_OFFSET_X = 38
 private const val FONT_SIZE = 12
-private const val USER_NAME_COLOR = 0xFF326CB8
 
 @Composable
 fun ListItem(
@@ -53,7 +53,7 @@ fun ListItem(
                 text = userName,
                 fontSize = FONT_SIZE.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(USER_NAME_COLOR)
+                color = colorResource(R.color.username_blue)
             )
             Text(
                 text = text,

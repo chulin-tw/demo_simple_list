@@ -14,9 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.moments.R
 
 private const val TIME_FONT_SIZE = 12
 private const val ROW_END_PADDING = 32
@@ -25,9 +26,7 @@ private const val ACTION_BOX_WIDTH = 30
 private const val ACTION_BOX_HEIGHT = 18
 private const val ACTION_BOX_CORNER_SHAPE = 4
 private const val ACTION_BOX_SPACE = 4
-private const val ACTION_BOX_COLOR = 0xFFE5E5E5
 private const val ACTION_CIRCLE_SHAPE = 2
-private const val ACTION_CIRCLE_COLOR = 0xFF5b6a92
 
 @Composable
 fun ListItemBottomRow(
@@ -56,7 +55,7 @@ private fun ActionButton(
         modifier = modifier
             .size(width = ACTION_BOX_WIDTH.dp, height = ACTION_BOX_HEIGHT.dp)
             .clip(RoundedCornerShape(ACTION_BOX_CORNER_SHAPE.dp))
-            .background(Color(ACTION_BOX_COLOR))
+            .background(colorResource(R.color.background_grey))
             .padding(ACTION_BOX_CORNER_SHAPE.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
@@ -76,6 +75,6 @@ private fun ActionCircle(
         modifier = modifier
             .size(ACTION_BOX_CORNER_SHAPE.dp)
             .clip(RoundedCornerShape(ACTION_CIRCLE_SHAPE.dp))
-            .background(Color(ACTION_CIRCLE_COLOR))
+            .background(colorResource(R.color.button_grey))
     )
 }
