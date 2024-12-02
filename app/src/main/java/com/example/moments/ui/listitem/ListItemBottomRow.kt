@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -43,29 +44,28 @@ fun ListItemBottomRow(
             text = "1小时前",
             fontSize = TIME_FONT_SIZE.sp
         )
-        ActionBox()
+        ActionButton()
     }
 }
 
 @Composable
-private fun ActionBox(
+private fun ActionButton(
     modifier: Modifier = Modifier
 ) {
-    Box(
+    Row(
         modifier = modifier
             .size(width = ACTION_BOX_WIDTH.dp, height = ACTION_BOX_HEIGHT.dp)
             .clip(RoundedCornerShape(ACTION_BOX_CORNER_SHAPE.dp))
             .background(Color(ACTION_BOX_COLOR))
             .padding(ACTION_BOX_CORNER_SHAPE.dp),
-        contentAlignment = Alignment.Center
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(ACTION_BOX_SPACE.dp)
-        ) {
-            ActionCircle()
-            ActionCircle()
-        }
+        ActionCircle()
+        Spacer(modifier = Modifier.size(ACTION_BOX_SPACE.dp))
+        ActionCircle()
     }
+
 }
 
 @Composable
