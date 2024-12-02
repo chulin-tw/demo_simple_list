@@ -35,7 +35,7 @@ fun ListItemRow(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewListItemRow() {
+private fun PreviewListItemRow() {
     ListItemRow(
         pictures = listOf(
             "http://localhost:3022/static/picture/picture_01.png",

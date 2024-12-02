@@ -27,6 +27,6 @@ fun MomentList(title: String, description: String, image: String, modifier: Modi
 
 @Preview(showBackground = true)
 @Composable
-fun MomentPreview() {
+private fun PreviewMoments() {
     //Todo: update it from MomentList
 }

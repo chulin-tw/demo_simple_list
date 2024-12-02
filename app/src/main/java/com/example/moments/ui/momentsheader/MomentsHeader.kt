@@ -77,6 +77,6 @@ fun MomentsHeader(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-fun PreviewMomentsHeader() {
+private fun PreviewMomentsHeader() {
     MomentsHeader()
 }

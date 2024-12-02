@@ -72,7 +72,7 @@ private const val TEST_TEXT = "test for only texts"
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewListItem() {
+private fun PreviewListItem() {
     ListItem(
         avatar = TEST_PIC,
         userName = TEST_USER_NAME,
