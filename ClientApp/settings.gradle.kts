@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Moments"
-include(":app", ":ClientApp:app")
-project(":ClientApp:app").projectDir = file("ClientApp/app")
+rootProject.name = "ClientApp"
+include(":app")
+ 

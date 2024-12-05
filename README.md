@@ -18,12 +18,12 @@ npm start
   - [x] add mock pic in repo
   - [x] adjust json structure
 - [x] update data from model->ds->vm->ui
-- [ ] list item compose
-  - [ ] bottom row
-    - [ ] time
-    - [ ] item
-- [ ] list compose
-- [ ] Connect to former app
+- [x] list item compose
+  - [x] bottom row
+    - [x] time
+    - [x] item
+- [x] list compose
+- [x] Connect to client app
 
 
 
