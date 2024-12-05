@@ -29,5 +29,5 @@ npm start
 
 - Java + RecyclerView
 
-- [ ] Todo: tasking
+- [ ] show list item layout
 
