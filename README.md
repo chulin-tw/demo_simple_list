@@ -29,5 +29,9 @@ npm start
 
 - Java + RecyclerView
 
-- [ ] show list item layout
+- [x] show list item layout with only text
+- [ ] connect data from backend 
+  - [ ] data model
+  - [ ] retrofit api
+  - [ ] update ui
 
