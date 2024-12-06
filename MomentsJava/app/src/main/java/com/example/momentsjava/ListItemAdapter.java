@@ -3,9 +3,9 @@ package com.example.momentsjava;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.momentsjava.model.ListItem;
 
 import java.util.List;
 
