@@ -16,7 +16,6 @@ public class ListRepository {
     @Inject
     public ListRepository(ListDataSource listDataSource) {
         this.listDataSource = listDataSource;
-        Log.d("Debug", "ListRepository constructor called");
     }
 
     public void getList(Callback<List<ListItem>> callback) {

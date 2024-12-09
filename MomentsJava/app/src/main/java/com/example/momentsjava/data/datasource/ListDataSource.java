@@ -17,7 +17,6 @@ public class ListDataSource {
     @Inject
     public ListDataSource(ListApiService listApiService) {
         this.listApiService = listApiService;
-        Log.d("Debug", "ListDataSource constructor called");
     }
 
     public void getList(Callback<List<ListItem>> callback) {

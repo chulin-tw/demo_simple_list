@@ -29,7 +29,6 @@ public class ListViewModel extends ViewModel {
     @Inject
     public ListViewModel(ListRepository listRepository) {
         this.listRepository = listRepository;
-        Log.d("Debug", "ListViewModel constructor called");
     }
 
     public LiveData<List<ListItem>> getListItems() {

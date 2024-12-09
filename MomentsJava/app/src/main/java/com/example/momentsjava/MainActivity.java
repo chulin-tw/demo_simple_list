@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.momentsjava.data.model.ListItem;
+import com.example.momentsjava.ui.list.ListItemAdapter;
 import com.example.momentsjava.ui.list.ListViewModel;
-
-import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

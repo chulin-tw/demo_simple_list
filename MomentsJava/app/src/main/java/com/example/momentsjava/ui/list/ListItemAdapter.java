@@ -1,4 +1,4 @@
-package com.example.momentsjava;
+package com.example.momentsjava.ui.list;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.momentsjava.R;
 import com.example.momentsjava.data.model.ListItem;
 
 import java.util.List;
