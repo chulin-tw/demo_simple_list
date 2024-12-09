@@ -1,4 +1,4 @@
-package com.example.momentsjava.model;
+package com.example.momentsjava.data.model;
 
 public class UserInfo {
     private String username;

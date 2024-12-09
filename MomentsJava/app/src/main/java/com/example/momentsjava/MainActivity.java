@@ -3,26 +3,25 @@ package com.example.momentsjava;
 import static java.util.Collections.emptyList;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.momentsjava.model.ListItem;
+import com.example.momentsjava.data.model.ListItem;
+import com.example.momentsjava.ui.list.ListViewModel;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
     private ListItemAdapter listItemAdapter;
+    private ListViewModel listViewModel;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -35,31 +34,13 @@ public class MainActivity extends AppCompatActivity {
         listItemAdapter = new ListItemAdapter(emptyList());
         recyclerView.setAdapter(listItemAdapter);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.205.19.77:3022")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        listViewModel = new ViewModelProvider(this).get(ListViewModel.class);
 
-        ListApiService listApiService = retrofit.create(ListApiService.class);
-        Call<List<ListItem>> call = listApiService.getList();
-        call.enqueue(new Callback<List<ListItem>>() {
-            @Override
-            public void onResponse(@NonNull Call<List<ListItem>> call, Response<List<ListItem>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    listItemAdapter.setListItems(response.body());
-                    Log.d("MainActivity", "Data set to adapter");
-                } else {
-                    Toast.makeText(MainActivity.this, "Error:" + response.message(), Toast.LENGTH_LONG).show();
-                    Log.e("MainActivity", "Error: " + response.message());
-                }
-            }
+        listViewModel.getListItems().observe(this, listItems -> listItemAdapter.setListItems(listItems));
 
-            @Override
-            public void onFailure(@NonNull Call<List<ListItem>> call, @NonNull Throwable t) {
-                Toast.makeText(MainActivity.this, "Failure: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("MainActivity", "Failure: " + t.getMessage(), t);
-            }
-        });
+        listViewModel.getErrorMessage().observe(this, errorMessage -> Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_SHORT).show());
+
+        listViewModel.fetchListItems();
 
 
     }

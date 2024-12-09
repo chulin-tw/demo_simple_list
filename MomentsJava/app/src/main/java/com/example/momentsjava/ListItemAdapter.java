@@ -1,12 +1,13 @@
 package com.example.momentsjava;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.momentsjava.model.ListItem;
+import com.example.momentsjava.data.model.ListItem;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
         return listItems.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setListItems(List<ListItem> listItems) {
         this.listItems = listItems;
         notifyDataSetChanged();

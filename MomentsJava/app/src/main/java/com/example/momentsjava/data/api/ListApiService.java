@@ -1,6 +1,6 @@
-package com.example.momentsjava;
+package com.example.momentsjava.data.api;
 
-import com.example.momentsjava.model.ListItem;
+import com.example.momentsjava.data.model.ListItem;
 
 import java.util.List;
 

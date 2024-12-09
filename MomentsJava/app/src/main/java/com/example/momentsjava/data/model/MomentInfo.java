@@ -1,4 +1,4 @@
-package com.example.momentsjava.model;
+package com.example.momentsjava.data.model;
 
 import java.util.List;
 
