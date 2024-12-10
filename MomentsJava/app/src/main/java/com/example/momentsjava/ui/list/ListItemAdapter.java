@@ -33,8 +33,8 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ListItemViewHolder holder, int position) {
-        holder.titleView.setText(listItems.get(position).getUserInfo().getUsername());
-        holder.descriptionView.setText(listItems.get(position).getMomentInfo().getText());
+        holder.usernameView.setText(listItems.get(position).getUserInfo().getUsername());
+        holder.contentView.setText(listItems.get(position).getMomentInfo().getText());
         Glide.with(holder.itemView)
                 .load(listItems.get(position).getUserInfo().getAvatar())
                 .transform(new RoundedCorners(12))

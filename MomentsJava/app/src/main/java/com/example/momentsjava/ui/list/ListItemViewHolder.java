@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.momentsjava.R;
 
 public class ListItemViewHolder extends RecyclerView.ViewHolder {
-    TextView titleView,descriptionView;
+    TextView usernameView,contentView;
     ImageView userAvatarView;
 
     public ListItemViewHolder(@NonNull View itemView) {
         super(itemView);
-        titleView = itemView.findViewById(R.id.title);
-        descriptionView = itemView.findViewById(R.id.description);
+        usernameView = itemView.findViewById(R.id.username);
+        contentView = itemView.findViewById(R.id.content);
         userAvatarView = itemView.findViewById(R.id.user_avatar);
     }
 }
