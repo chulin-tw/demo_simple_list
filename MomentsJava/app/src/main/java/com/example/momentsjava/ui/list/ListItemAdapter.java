@@ -2,6 +2,7 @@ package com.example.momentsjava.ui.list;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,36 +43,51 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
                 .transform(new RoundedCorners(12))
                 .into(holder.userAvatarView);
 
-        List<String> pictures = listItems.get(position).getMomentInfo().getPicture();
+        setPictures(listItems.get(position).getMomentInfo().getPicture(), holder.picturesContainer, holder.itemView);
 
-        LinearLayout picturesContainer = holder.picturesContainer;
+    }
 
+    private void setPictures(List<String> pictures, LinearLayout picturesContainer, View itemView) {
         picturesContainer.removeAllViews();
 
         int rows = (int) Math.ceil(pictures.size() / 3.0);
         for (int row = 0; row < rows; row++) {
-            LinearLayout rowLayout = new LinearLayout(holder.itemView.getContext());
-            rowLayout.setOrientation(LinearLayout.HORIZONTAL);
-            rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            int startIndex = row * 3;
-            int endIndex = Math.min(startIndex + 3, pictures.size());
-            for (int i = startIndex; i < endIndex; i++) {
-                ImageView pictureView = new ImageView(holder.itemView.getContext());
-                Glide.with(holder.itemView)
-                        .load(pictures.get(i))
-                        .into(pictureView);
-
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-                params.setMargins(0, 0, 4, 0);
-                pictureView.setLayoutParams(params);
-                rowLayout.addView(pictureView);
-            }
+            LinearLayout rowLayout = createRowLayout(itemView);
+            addPicturesToRow(pictures, row, rowLayout, itemView);
             picturesContainer.addView(rowLayout);
         }
-
     }
+
+    private LinearLayout createRowLayout(View itemView) {
+        LinearLayout rowLayout = new LinearLayout(itemView.getContext());
+        rowLayout.setOrientation(LinearLayout.HORIZONTAL);
+        rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        return rowLayout;
+    }
+
+    private void addPicturesToRow(List<String> pictures, int row, LinearLayout rowLayout, View itemView) {
+        int startIndex = row * 3;
+        int endIndex = Math.min(startIndex + 3, pictures.size());
+        for (int i = startIndex; i < endIndex; i++) {
+            ImageView pictureView = createPictureView(pictures.get(i), itemView);
+            rowLayout.addView(pictureView);
+        }
+    }
+
+    private ImageView createPictureView(String pictureUrl, View itemView) {
+        ImageView pictureView = new ImageView(itemView.getContext());
+        Glide.with(itemView)
+                .load(pictureUrl)
+                .into(pictureView);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        params.setMargins(0, 0, 4, 0);
+        pictureView.setLayoutParams(params);
+        return pictureView;
+    }
+
 
     @Override
     public int getItemCount() {
