@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.momentsjava.R;
 import com.example.momentsjava.data.model.ListItem;
 
@@ -33,6 +35,11 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
     public void onBindViewHolder(@NonNull ListItemViewHolder holder, int position) {
         holder.titleView.setText(listItems.get(position).getUserInfo().getUsername());
         holder.descriptionView.setText(listItems.get(position).getMomentInfo().getText());
+        Glide.with(holder.itemView)
+                .load(listItems.get(position).getUserInfo().getAvatar())
+                .transform(new RoundedCorners(12))
+                .into(holder.userAvatarView);
+
     }
 
     @Override

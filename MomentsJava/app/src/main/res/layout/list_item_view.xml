@@ -5,19 +5,32 @@
     android:layout_marginTop="10dp"
     android:layout_marginStart="10dp"
     xmlns:tools="http://schemas.android.com/tools">
-    <TextView
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/user_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/title"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        tools:text="Title"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/description"
-        android:textColor="@color/black"
-        android:layout_below="@id/title"
-        tools:text="this is a short description"/>
+        android:layout_toEndOf="@id/user_avatar"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:text="Title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/description"
+            android:textColor="@color/black"
+            tools:text="this is a short description"/>
+    </LinearLayout>
 
 </RelativeLayout>
