@@ -41,9 +41,16 @@
             android:id="@+id/picture_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:orientation="vertical">
 
         </LinearLayout>
-    </LinearLayout>
 
+        <include
+            android:id="@+id/list_item_bottom_row"
+            layout="@layout/list_item_bottom_row"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </RelativeLayout>
