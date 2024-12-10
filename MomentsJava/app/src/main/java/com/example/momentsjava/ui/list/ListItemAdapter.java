@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.momentsjava.R;
 import com.example.momentsjava.data.model.ListItem;
 
@@ -79,11 +80,14 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
         ImageView pictureView = new ImageView(itemView.getContext());
         Glide.with(itemView)
                 .load(pictureUrl)
+                .apply(new RequestOptions().centerCrop())
                 .into(pictureView);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-        params.setMargins(0, 0, 4, 0);
+        int width = (int) (110 * itemView.getContext().getResources().getDisplayMetrics().density);
+        int height = (int) (110 * itemView.getContext().getResources().getDisplayMetrics().density);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width, height);
+        params.setMargins(0, 0, 8, 8);
         pictureView.setLayoutParams(params);
         return pictureView;
     }
