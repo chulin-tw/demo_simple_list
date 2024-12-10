@@ -1,5 +1,7 @@
 package com.example.momentsjava.data.model;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 public class MomentInfo {
@@ -21,6 +23,15 @@ public class MomentInfo {
 
     public List<String> getPicture() {
         return picture;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "MomentInfo{" +
+                "text='" + text + '\'' +
+                ", picture=" + picture +
+                '}';
     }
 
     public void setPicture(List<String> picture) {

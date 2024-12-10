@@ -36,6 +36,14 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             tools:text="this is a short description" />
+
+        <LinearLayout
+            android:id="@+id/picture_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

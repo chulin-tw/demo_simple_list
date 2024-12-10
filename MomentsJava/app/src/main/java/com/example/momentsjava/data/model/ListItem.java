@@ -1,5 +1,7 @@
 package com.example.momentsjava.data.model;
 
+import androidx.annotation.NonNull;
+
 public class ListItem {
     private UserInfo userInfo;
     private MomentInfo momentInfo;
@@ -23,5 +25,14 @@ public class ListItem {
 
     public void setMomentInfo(MomentInfo momentInfo) {
         this.momentInfo = momentInfo;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "ListItem{" +
+                "userInfo=" + userInfo +
+                ", momentInfo=" + momentInfo +
+                '}';
     }
 }

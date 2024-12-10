@@ -1,5 +1,7 @@
 package com.example.momentsjava.data.model;
 
+import androidx.annotation.NonNull;
+
 public class UserInfo {
     private String username;
     private String avatar;
@@ -23,5 +25,14 @@ public class UserInfo {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "username='" + username + '\'' +
+                ", avatar='" + avatar + '\'' +
+                '}';
     }
 }
