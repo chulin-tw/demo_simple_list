@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.momentsjava.ui.list.ListItemAdapter;
+import com.example.momentsjava.ui.list.ListItemDivider;
 import com.example.momentsjava.ui.list.ListViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ListItemDivider divider = new ListItemDivider(recyclerView.getContext(), 16);
+        recyclerView.addItemDecoration(divider);
 
         listItemAdapter = new ListItemAdapter(emptyList());
         recyclerView.setAdapter(listItemAdapter);
