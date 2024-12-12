@@ -10,6 +10,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ClientApp" />
+            <option value="$PROJECT_DIR$/ClientApp/app" />
+            <option value="$PROJECT_DIR$/MomentsJava" />
+            <option value="$PROJECT_DIR$/MomentsJava/app" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

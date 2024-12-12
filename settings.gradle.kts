@@ -20,6 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Moments"
-include(":app", ":ClientApp:app",":MomentsJava:app")
-project(":ClientApp:app").projectDir = file("ClientApp/app")
-project(":MomentsJava:app").projectDir = file("MomentsJava/app")
+include( ":ClientApp",":MomentsJava",":MomentsKotlin")

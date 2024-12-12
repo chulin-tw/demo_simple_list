@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Moments</string>
-    <string name="default_background_description">default_background</string>
-    <string name="default_user_name">Lilian</string>
-    <string name="default_avatar_description">default_avatar</string>
-    <string name="list_item_user_avatar_description">user_avatar</string>
-    <string name="user_pictures_description">user_pictures</string>
-
-</resources>

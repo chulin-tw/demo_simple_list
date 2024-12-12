@@ -20,5 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "MomentsJava"
-include(":app")
  
