@@ -7,7 +7,7 @@ if [ -z "$current_ip" ]; then
   exit 1
 fi
 
-project_dir_kotlin="/Users/chulinwang/AndroidStudioProjects/Moments"
+project_dir_kotlin="/Users/chulinwang/AndroidStudioProjects/Moments/MomentsKotlin"
 project_dir_java="/Users/chulinwang/AndroidStudioProjects/Moments/MomentsJava"
 
 server_js_path="$project_dir_kotlin/backend/server.js"
