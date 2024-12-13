@@ -11,10 +11,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/ClientApp" />
-            <option value="$PROJECT_DIR$/ClientApp/app" />
             <option value="$PROJECT_DIR$/MomentsJava" />
-            <option value="$PROJECT_DIR$/MomentsJava/app" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/MomentsKotlin" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
