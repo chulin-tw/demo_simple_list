@@ -6,11 +6,11 @@ if [ -z "$current_ip" ]; then
   echo "无法获取当前的IP地址"
   exit 1
 fi
-
+project_dir_moments="/Users/chulinwang/AndroidStudioProjects/Moments"
 project_dir_kotlin="/Users/chulinwang/AndroidStudioProjects/Moments/MomentsKotlin"
 project_dir_java="/Users/chulinwang/AndroidStudioProjects/Moments/MomentsJava"
 
-server_js_path="$project_dir_kotlin/backend/server.js"
+server_js_path="$project_dir_moments/backend/server.js"
 if [ -f "$server_js_path" ]; then
   sed -i '' "s/^const domain = .*$/const domain = '$current_ip';/" "$server_js_path"
   echo "已成功修改 $server_js_path"
