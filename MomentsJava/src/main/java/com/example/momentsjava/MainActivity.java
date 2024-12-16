@@ -25,24 +25,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
+        setupRecyclerView();
+        setupViewModel();
+    }
 
+    private void setupRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         ListItemDivider divider = new ListItemDivider(recyclerView.getContext(), 16);
         recyclerView.addItemDecoration(divider);
-
         listItemAdapter = new ListItemAdapter(emptyList());
         recyclerView.setAdapter(listItemAdapter);
-
-        listViewModel = new ViewModelProvider(this).get(ListViewModel.class);
-
-        listViewModel.getListItems().observe(this, listItems -> listItemAdapter.setListItems(listItems));
-
-        listViewModel.getErrorMessage().observe(this, errorMessage -> Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_SHORT).show());
-
-        listViewModel.fetchListItems();
-
-
     }
+
+    private void setupViewModel() {
+        listViewModel = new ViewModelProvider(this).get(ListViewModel.class);
+        listViewModel.getListItems().observe(this, listItems -> listItemAdapter.setListItems(listItems));
+        listViewModel.getErrorMessage().observe(this, errorMessage -> Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_SHORT).show());
+        listViewModel.fetchListItems();
+    }
+
 }
