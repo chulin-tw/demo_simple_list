@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="background_grey">#FFE5E5E5</color>
-    <color name="button_grey">#FF5b6a92</color>
-    <color name="username_blue">#FF326CB8</color>
-</resources>
