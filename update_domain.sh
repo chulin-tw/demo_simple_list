@@ -19,7 +19,7 @@ else
   exit 1
 fi
 
-list_api_module_path="$project_dir_kotlin/app/src/main/java/com/example/moments/data/api/di/ListApiModule.kt"
+list_api_module_path="$project_dir_kotlin/src/main/java/com/example/moments/data/api/di/ListApiModule.kt"
 if [ -f "$list_api_module_path" ]; then
   sed -i '' "s/^private const val DOMAIN_URL = \".*\"$/private const val DOMAIN_URL = \"$current_ip\"/" "$list_api_module_path"
   echo "已成功修改 $list_api_module_path"
@@ -28,7 +28,7 @@ else
   exit 1
 fi
 
-list_api_module_path_java="$project_dir_java/app/src/main/java/com/example/momentsjava/data/api/di/ListApiModule.java"
+list_api_module_path_java="$project_dir_java/src/main/java/com/example/momentsjava/data/api/di/ListApiModule.java"
 if [ -f "$list_api_module_path_java" ]; then
   sed -i '' "s/^private static final String DOMAIN_URL = \".*\"$/private static final String DOMAIN_URL = \"$current_ip\"/" "$list_api_module_path_java"
   echo "已成功修改 $list_api_module_path_java"
