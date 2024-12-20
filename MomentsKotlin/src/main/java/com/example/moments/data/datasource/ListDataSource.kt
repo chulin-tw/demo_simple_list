@@ -1,16 +1,19 @@
 package com.example.moments.data.datasource
 
-import com.example.moments.data.api.ListApiService
+import com.example.moments.data.api.ListApiClient
 import com.example.moments.data.model.ListItem
-import javax.inject.Inject
 
-class ListDataSource @Inject constructor(private val listApiService: ListApiService) {
+class ListDataSource(private val listApiClient: ListApiClient) {
     suspend fun fetchList(): Result<List<ListItem>> {
         return try {
-            val response = listApiService.getList()
-            Result.success(response)
+            val list = listApiClient.getList()
+            if (list != null) {
+                Result.success(list)
+            } else {
+                Result.failure(Exception("Failed to fetch list: null response"))
+            }
         } catch (e: Exception) {
-            Result.failure<List<ListItem>>(e)
+            Result.failure(e)
         }
     }
 }
