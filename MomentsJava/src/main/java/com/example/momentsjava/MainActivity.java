@@ -14,12 +14,8 @@ import com.example.momentsjava.ui.list.ListItemAdapter;
 import com.example.momentsjava.ui.list.ListItemDivider;
 import com.example.momentsjava.ui.list.ListViewModel;
 
-import dagger.hilt.android.AndroidEntryPoint;
-
-@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
     private ListItemAdapter listItemAdapter;
-    private ListViewModel listViewModel;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -39,10 +35,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewModel() {
-        listViewModel = new ViewModelProvider(this).get(ListViewModel.class);
+        ListViewModel listViewModel = new ViewModelProvider(this).get(ListViewModel.class);
         listViewModel.getListItems().observe(this, listItems -> listItemAdapter.setListItems(listItems));
         listViewModel.getErrorMessage().observe(this, errorMessage -> Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_SHORT).show());
         listViewModel.fetchListItems();
     }
-
 }

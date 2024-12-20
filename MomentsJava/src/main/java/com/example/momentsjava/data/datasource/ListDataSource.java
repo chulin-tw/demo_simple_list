@@ -1,25 +1,21 @@
 package com.example.momentsjava.data.datasource;
 
-import android.util.Log;
-
-import com.example.momentsjava.data.api.ListApiService;
+import com.example.momentsjava.data.api.ListApiClient;
 import com.example.momentsjava.data.model.ListItem;
 
 import java.util.List;
 
-import jakarta.inject.Inject;
-import retrofit2.Callback;
+import io.reactivex.rxjava3.core.Observable;
 
 public class ListDataSource {
 
-    private final ListApiService listApiService;
+    private final ListApiClient listApiClient;
 
-    @Inject
-    public ListDataSource(ListApiService listApiService) {
-        this.listApiService = listApiService;
+    public ListDataSource(ListApiClient listApiClient) {
+        this.listApiClient = listApiClient;
     }
 
-    public void getList(Callback<List<ListItem>> callback) {
-        listApiService.getList().enqueue(callback);
+    public Observable<List<ListItem>> getList() {
+        return listApiClient.getList();
     }
 }
