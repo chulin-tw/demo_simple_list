@@ -11,12 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="180dp" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <FrameLayout
+        android:id="@+id/list_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/moment_header"
         android:layout_marginTop="40dp" />
-
 </RelativeLayout>
