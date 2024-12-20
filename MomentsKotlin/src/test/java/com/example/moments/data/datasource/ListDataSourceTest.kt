@@ -1,6 +1,6 @@
 package com.example.moments.data.datasource
 
-import com.example.moments.data.api.ListApiService
+import com.example.moments.data.api.ListApiClient
 import com.example.moments.data.model.ListItem
 import com.example.moments.data.model.MomentInfo
 import com.example.moments.data.model.UserInfo
@@ -12,13 +12,13 @@ import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 
 class ListDataSourceTest {
-    private lateinit var mockListApiService: ListApiService
+    private lateinit var mockListApiClient: ListApiClient
     private lateinit var listDataSource: ListDataSource
 
     @Before
     fun setUp() {
-        mockListApiService = mockk()
-        listDataSource = ListDataSource(mockListApiService)
+        mockListApiClient = mockk()
+        listDataSource = ListDataSource(mockListApiClient)
     }
 
     @Test
@@ -46,7 +46,7 @@ class ListDataSourceTest {
                 )
             )
         )
-        coEvery { mockListApiService.getList() } returns expectedList
+        coEvery { mockListApiClient.getList() } returns expectedList
         // When
         val result = listDataSource.fetchList()
         // Then
@@ -58,7 +58,7 @@ class ListDataSourceTest {
     fun `WHEN api call fails THEN return error`() = runBlocking {
         // Given
         val expectedError = Exception("API call failed")
-        coEvery { mockListApiService.getList() } throws expectedError
+        coEvery { mockListApiClient.getList() } throws expectedError
         // When
         val result = listDataSource.fetchList()
         // Then
