@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
 }
 
 android {
@@ -7,11 +7,8 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.momentsjava"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

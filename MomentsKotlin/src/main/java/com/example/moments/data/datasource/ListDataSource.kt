@@ -4,7 +4,7 @@ import com.example.moments.data.api.ListApiClient
 import com.example.moments.data.model.ListItem
 
 class ListDataSource(private val listApiClient: ListApiClient) {
-    suspend fun fetchList(): Result<List<ListItem>> {
+     fun fetchList(): Result<List<ListItem>> {
         return try {
             val list = listApiClient.getList()
             if (list != null) {

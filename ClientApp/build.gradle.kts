@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.clientapp"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":MomentsJava"))
+    implementation(project(":MomentsKotlin"))
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-ktx:1.9.3")

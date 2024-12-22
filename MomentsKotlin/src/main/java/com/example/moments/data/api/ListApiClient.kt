@@ -10,7 +10,7 @@ private const val DOMAIN_URL = "192.168.31.246"
 private const val TIME_OUT = 10000
 
 class ListApiClient {
-    suspend fun getList(): List<ListItem>? {
+    fun getList(): List<ListItem>? {
         var connection: HttpURLConnection? = null
         try {
             connection = URL("http://$DOMAIN_URL:3022").openConnection() as HttpURLConnection

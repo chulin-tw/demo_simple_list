@@ -10,11 +10,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.moments.ui.MomentsScreen
 import com.example.moments.ui.theme.MomentsScheme
-import dagger.hilt.android.AndroidEntryPoint
 
-
-@AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivityKT : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.momentsjava.ui.list.ListFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityJava extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);

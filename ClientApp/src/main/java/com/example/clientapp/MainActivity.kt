@@ -15,6 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.clientapp.ui.theme.ClientAppTheme
+import com.example.moments.MainActivityKT
+import com.example.momentsjava.MainActivityJava
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,20 +33,13 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun openMomentsKotlinActivity() {
-        val intent = Intent()
-            .setClassName(
-                "com.example.moments",
-                "com.example.moments.MainActivity"
-            )
+        val intent = Intent(this, MainActivityKT::class.java)
+
         startActivity(intent)
     }
 
     private fun openMomentsJavaActivity() {
-        val intent = Intent()
-            .setClassName(
-                "com.example.momentsjava",
-                "com.example.momentsjava.MainActivity"
-            )
+        val intent = Intent(this, MainActivityJava::class.java)
         startActivity(intent)
     }
 }

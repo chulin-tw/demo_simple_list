@@ -5,14 +5,22 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.moments.data.api.ListApiClient
+import com.example.moments.data.datasource.ListDataSource
+import com.example.moments.data.repository.ListRepository
 import com.example.moments.ui.list.ListViewModel
 import com.example.moments.ui.momentsheader.MomentsHeader
 import com.example.moments.ui.momentslist.MomentsList
 
 @Composable
 fun MomentsScreen(
-    viewModel: ListViewModel = hiltViewModel(),
+    viewModel: ListViewModel = ListViewModel(
+        listRepository = ListRepository(
+            listDataSource = ListDataSource(
+                listApiClient = ListApiClient()
+            )
+        )
+    ),
     modifier: Modifier = Modifier
 ) {
     val listItems = viewModel.list.value

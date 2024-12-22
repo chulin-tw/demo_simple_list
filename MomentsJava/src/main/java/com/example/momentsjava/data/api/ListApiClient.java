@@ -1,5 +1,7 @@
 package com.example.momentsjava.data.api;
 
+import android.util.Log;
+
 import com.example.momentsjava.data.model.ListItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -22,7 +24,7 @@ public class ListApiClient {
         return Observable.create(emitter -> {
             HttpURLConnection connection = null;
             try {
-                connection = (HttpURLConnection) new URL("http://" + DOMAIN_URL + ":3022").openConnection();
+                connection = (HttpURLConnection) new URL("http://" + DOMAIN_URL + ":3022/list").openConnection();
                 connection.setRequestMethod("GET");
                 connection.setConnectTimeout(TIMEOUT);
                 connection.setReadTimeout(10000);
@@ -40,9 +42,11 @@ public class ListApiClient {
                     emitter.onNext(listItems);
                     emitter.onComplete();
                 } else {
+                    Log.d("ListApiClient", "Error: HTTP " + responseCode);
                     emitter.onError(new Exception("Error: HTTP " + responseCode));
                 }
             } catch (Exception e) {
+                Log.d("ListApiClient", "Error: " + e.getMessage());
                 emitter.onError(e);
             } finally {
                 if (connection != null) {
