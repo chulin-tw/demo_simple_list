@@ -1,7 +1,7 @@
 package com.example.moments.data.datasource
 
 import com.example.moments.data.api.ListApiClient
-import com.example.moments.expectedList
+import com.example.moments.MomentItems
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -22,12 +22,12 @@ class ListDataSourceTest {
     @Test
     fun `WHEN api call is successful THEN return list of items`() = runBlocking {
         // Given
-        coEvery { mockListApiClient.getList() } returns expectedList
+        coEvery { mockListApiClient.getList() } returns MomentItems
         // When
         val result = listDataSource.fetchList()
         // Then
         assertEquals(result.isSuccess, true)
-        assertEquals(result.getOrNull(), expectedList)
+        assertEquals(result.getOrNull(), MomentItems)
     }
 
     @Test

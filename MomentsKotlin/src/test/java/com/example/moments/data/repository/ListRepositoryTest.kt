@@ -1,7 +1,7 @@
 package com.example.moments.data.repository
 
 import com.example.moments.data.datasource.ListDataSource
-import com.example.moments.expectedList
+import com.example.moments.MomentItems
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -22,10 +22,10 @@ class ListRepositoryTest {
     @Test
     fun `WHEN list repository is called THEN should return data`() = runBlocking {
         // Given
-        coEvery { mockListDataSource.fetchList() } returns Result.success(expectedList)
+        coEvery { mockListDataSource.fetchList() } returns Result.success(MomentItems)
         // When
         val result = listRepository.getList()
         // Then
-        assertEquals(Result.success(expectedList), result)
+        assertEquals(Result.success(MomentItems), result)
     }
 }
