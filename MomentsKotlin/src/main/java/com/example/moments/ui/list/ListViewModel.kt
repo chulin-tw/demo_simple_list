@@ -22,8 +22,8 @@ class ListViewModel(private val listRepository: ListRepository) : ViewModel() {
             try {
                 _list.value = listRepository.getList()
             } catch (e: IOException) {
-                Log.e("ListViewModel", e.toString())
-                _error.value = "Error loading list"
+//                Log.e("ListViewModel", e.toString())
+                _error.value = e.toString()
             }
         }
     }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import com.example.moments.data.api.di.ListApiModule
 import com.example.moments.data.datasource.ListDataSource
 import com.example.moments.data.repository.ListRepository
 import com.example.moments.ui.list.ListViewModel
@@ -15,7 +16,9 @@ import com.example.moments.ui.momentslist.MomentsList
 fun MomentsScreen(
     viewModel: ListViewModel = ListViewModel(
         listRepository = ListRepository(
-            listDataSource = ListDataSource()
+            listDataSource = ListDataSource(
+                listApiService = ListApiModule.provideListApiService(ListApiModule.provideRetrofit())
+            )
         )
     ),
     modifier: Modifier = Modifier
