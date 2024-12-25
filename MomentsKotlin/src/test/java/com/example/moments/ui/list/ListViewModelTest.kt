@@ -1,7 +1,7 @@
 package com.example.moments.ui.list
 
-import com.example.moments.data.repository.ListRepository
 import com.example.moments.MomentItems
+import com.example.moments.data.repository.ListRepository
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +13,7 @@ import kotlinx.coroutines.test.setMain
 import org.junit.Before
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
+import java.io.IOException
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ListViewModelTest {
@@ -30,7 +31,7 @@ class ListViewModelTest {
     @Test
     fun `WHEN loadItems is called THEN should load data`() = runTest {
         // Given
-        coEvery { mockListRepository.getList() } returns Result.success(MomentItems)
+        coEvery { mockListRepository.getList() } returns MomentItems
         // When
         listViewModel.loadItems()
         advanceUntilIdle()
@@ -41,12 +42,12 @@ class ListViewModelTest {
     @Test
     fun `WHEN loadItems call fails THEN should set error`() = runTest {
         // Given
-        val expectedError = Exception("API call failed")
-        coEvery { mockListRepository.getList() } returns Result.failure(expectedError)
+        val expectedError = IOException("IOE failed")
+        coEvery { mockListRepository.getList() } throws expectedError
         // When
         listViewModel.loadItems()
         advanceUntilIdle()
         // Then
-        assertEquals(listViewModel.error.value, expectedError.message)
+        assertEquals(listViewModel.error.value, expectedError.toString())
     }
 }
