@@ -37,6 +37,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.8.5")
     implementation ("io.reactivex.rxjava3:rxjava:3.1.10")
     implementation ("io.reactivex.rxjava3:rxandroid:3.0.0")
+    implementation ("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
     testImplementation("junit:junit:4.13.2")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

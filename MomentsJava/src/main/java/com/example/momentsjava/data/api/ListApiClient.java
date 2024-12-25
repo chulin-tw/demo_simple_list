@@ -6,6 +6,7 @@ import com.example.momentsjava.data.model.ListItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
@@ -17,7 +18,7 @@ import io.reactivex.rxjava3.core.Observable;
 
 public class ListApiClient {
 
-    private static final String DOMAIN_URL = "10.205.19.77";
+    private static final String DOMAIN_URL = "192.168.31.17";
     private static final int TIMEOUT = 10000;
 
     public Observable<List<ListItem>> getList() {
@@ -45,8 +46,8 @@ public class ListApiClient {
                     Log.d("ListApiClient", "Error: HTTP " + responseCode);
                     emitter.onError(new Exception("Error: HTTP " + responseCode));
                 }
-            } catch (Exception e) {
-                Log.d("ListApiClient", "Error: " + e.getMessage());
+            } catch (IOException e) {
+                Log.d("ListApiClient", "IOE Error: " + e.getMessage());
                 emitter.onError(e);
             } finally {
                 if (connection != null) {

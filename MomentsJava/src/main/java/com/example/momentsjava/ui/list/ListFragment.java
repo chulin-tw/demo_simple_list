@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.momentsjava.R;
-import com.example.momentsjava.data.api.ListApiClient;
 import com.example.momentsjava.data.datasource.ListDataSource;
 import com.example.momentsjava.data.factory.ListViewModelFactory;
 import com.example.momentsjava.data.repository.ListRepository;
@@ -44,8 +43,7 @@ public class ListFragment extends Fragment {
     }
 
     private void setupViewModel() {
-        ListApiClient listApiClient = new ListApiClient();
-        ListDataSource listDataSource = new ListDataSource(listApiClient);
+        ListDataSource listDataSource = new ListDataSource();
         ListRepository listRepository = new ListRepository(listDataSource);
         ListViewModelFactory factory = new ListViewModelFactory(listRepository);
         ListViewModel listViewModel = new ViewModelProvider(requireActivity(), factory).get(ListViewModel.class);
