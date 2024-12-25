@@ -4,7 +4,7 @@ import com.example.moments.data.datasource.ListDataSource
 import com.example.moments.data.model.ListItem
 
 class ListRepository(private val listDataSource: ListDataSource) {
-     fun getList(): Result<List<ListItem>> {
+     suspend fun getList(): List<ListItem> {
         return listDataSource.fetchList()
     }
 }

@@ -1,19 +1,12 @@
 package com.example.moments.data.datasource
 
-import com.example.moments.data.api.ListApiClient
+import com.example.moments.data.api.ListApiService
+import com.example.moments.data.api.di.ListApiModule
 import com.example.moments.data.model.ListItem
 
-class ListDataSource(private val listApiClient: ListApiClient) {
-     fun fetchList(): Result<List<ListItem>> {
-        return try {
-            val list = listApiClient.getList()
-            if (list != null) {
-                Result.success(list)
-            } else {
-                Result.failure(Exception("Failed to fetch list: null response"))
-            }
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+class ListDataSource() {
+    private val listApiService: ListApiService = ListApiModule.provideListApiService(ListApiModule.provideRetrofit())
+    suspend fun fetchList(): List<ListItem> {
+        return listApiService.getList()
     }
 }
