@@ -1,25 +1,15 @@
 package com.example.momentsjava.ui.list;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.momentsjava.R;
+import com.example.momentsjava.databinding.ListItemViewBinding;
 
 public class ListItemViewHolder extends RecyclerView.ViewHolder {
-    TextView usernameView,contentView;
-    ImageView userAvatarView;
-    LinearLayout picturesContainer;
+    final ListItemViewBinding binding;
 
-    public ListItemViewHolder(@NonNull View itemView) {
-        super(itemView);
-        usernameView = itemView.findViewById(R.id.username);
-        contentView = itemView.findViewById(R.id.content);
-        userAvatarView = itemView.findViewById(R.id.user_avatar);
-        picturesContainer = itemView.findViewById(R.id.picture_container);
+    public ListItemViewHolder(@NonNull ListItemViewBinding binding) {
+        super(binding.getRoot());
+        this.binding = binding;
     }
 }

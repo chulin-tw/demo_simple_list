@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.momentsjava.R;
 import com.example.momentsjava.data.model.ListItem;
+import com.example.momentsjava.databinding.ListItemViewBinding;
 
 import java.util.List;
 
@@ -29,23 +29,21 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
     @NonNull
     @Override
     public ListItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ListItemViewHolder(LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.list_item_view,
-                parent,
-                false));
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        ListItemViewBinding binding = ListItemViewBinding.inflate(inflater, parent, false);
+        return new ListItemViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListItemViewHolder holder, int position) {
-        holder.usernameView.setText(listItems.get(position).getUserInfo().getUsername());
-        holder.contentView.setText(listItems.get(position).getMomentInfo().getText());
+        ListItem listItem = listItems.get(position);
+        holder.binding.setListItem(listItem);
+        holder.binding.executePendingBindings();
         Glide.with(holder.itemView)
-                .load(listItems.get(position).getUserInfo().getAvatar())
+                .load(listItem.getUserInfo().getAvatar())
                 .transform(new RoundedCorners(12))
-                .into(holder.userAvatarView);
-
-        setPictures(listItems.get(position).getMomentInfo().getPicture(), holder.picturesContainer, holder.itemView);
-
+                .into(holder.binding.userAvatar);
+        setPictures(listItem.getMomentInfo().getPicture(), holder.binding.pictureContainer, holder.itemView);
     }
 
     private void setPictures(List<String> pictures, LinearLayout picturesContainer, View itemView) {
