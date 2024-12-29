@@ -36,5 +36,5 @@ else
   echo "找不到文件 $list_api_module_path_java"
   exit 1
 fi
-
+echo "当前ip地址：$current_ip"
 echo "脚本成功完成所有修改！"
