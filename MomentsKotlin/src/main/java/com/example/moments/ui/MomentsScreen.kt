@@ -24,6 +24,7 @@ fun MomentsScreen(
     modifier: Modifier = Modifier
 ) {
     val listItems = viewModel.list.value
+    val isLoading = viewModel.loading.value
     LaunchedEffect(Unit) {
         viewModel.loadItems()
     }
@@ -32,7 +33,11 @@ fun MomentsScreen(
             .fillMaxSize()
     ) {
         MomentsHeader()
-        MomentsList(listItems)
+        MomentsList(
+            listItems,
+            isRefreshing = isLoading,
+            onRefresh = { viewModel.loadItems() },
+        )
     }
 }
 
