@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.momentsjava.R;
 import com.example.momentsjava.data.datasource.ListDataSource;
@@ -21,6 +22,7 @@ import com.example.momentsjava.data.repository.ListRepository;
 
 public class ListFragment extends Fragment {
     private ListItemAdapter listItemAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public ListFragment() {
     }
@@ -30,6 +32,7 @@ public class ListFragment extends Fragment {
         View view = inflater.inflate(R.layout.list_fragment, container, false);
         setupRecyclerView(view);
         setupViewModel();
+        setupSwipeRefreshLayout(view);
         return view;
     }
 
@@ -49,11 +52,21 @@ public class ListFragment extends Fragment {
         ListViewModel listViewModel = new ViewModelProvider(requireActivity(), factory).get(ListViewModel.class);
         listViewModel.getListItems().observe(getViewLifecycleOwner(), listItems -> {
             listItemAdapter.setListItems(listItems);
+            swipeRefreshLayout.setRefreshing(false);
             Log.d("ListFragment", "List items: " + listItems);
         });
         listViewModel.getErrorMessage().observe(getViewLifecycleOwner(), errorMessage -> {
             Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            swipeRefreshLayout.setRefreshing(false);
         });
         listViewModel.fetchListItems();
+    }
+
+    private void setupSwipeRefreshLayout(View rootView) {
+        swipeRefreshLayout = rootView.findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            ListViewModel listViewModel = new ViewModelProvider(requireActivity()).get(ListViewModel.class);
+            listViewModel.fetchListItems();
+        });
     }
 }
