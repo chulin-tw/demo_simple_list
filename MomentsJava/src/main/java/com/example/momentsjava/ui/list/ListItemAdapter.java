@@ -44,6 +44,21 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
                 .transform(new RoundedCorners(12))
                 .into(holder.binding.userAvatar);
         setPictures(listItem.getMomentInfo().getPicture(), holder.binding.pictureContainer, holder.itemView);
+        holder.binding.content.post(() -> {
+            if (holder.binding.content.getLineCount() > 5) {
+                holder.binding.content.setMaxLines(5);
+                holder.binding.expandToggle.setVisibility(View.VISIBLE);
+            }
+        });
+        holder.binding.expandToggle.setOnClickListener(v -> {
+            if (holder.binding.expandToggle.getText().equals("全文")) {
+                holder.binding.content.setMaxLines(Integer.MAX_VALUE);
+                holder.binding.expandToggle.setText("收起");
+            } else {
+                holder.binding.content.setMaxLines(5);
+                holder.binding.expandToggle.setText("全文");
+            }
+        });
     }
 
     private void setPictures(List<String> pictures, LinearLayout picturesContainer, View itemView) {

@@ -46,6 +46,15 @@
                 android:textSize="16sp"
                 tools:text="this is a short description" />
 
+            <TextView
+                android:id="@+id/expandToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全文"
+                android:textColor="@color/username_blue"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
             <LinearLayout
                 android:id="@+id/picture_container"
                 android:layout_width="wrap_content"
