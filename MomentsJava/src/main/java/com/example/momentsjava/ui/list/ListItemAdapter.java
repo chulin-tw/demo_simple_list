@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.momentsjava.R;
 import com.example.momentsjava.data.model.ListItem;
 import com.example.momentsjava.databinding.ListItemViewBinding;
 
@@ -44,20 +45,21 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
                 .transform(new RoundedCorners(12))
                 .into(holder.binding.userAvatar);
         setPictures(listItem.getMomentInfo().getPicture(), holder.binding.pictureContainer, holder.itemView);
+        setExpandableContent(holder);
+    }
+
+    private static void setExpandableContent(@NonNull ListItemViewHolder holder) {
         holder.binding.content.post(() -> {
-            if (holder.binding.content.getLineCount() > 5) {
-                holder.binding.content.setMaxLines(5);
-                holder.binding.expandToggle.setVisibility(View.VISIBLE);
-            }
+            boolean isContentExpandable = holder.binding.content.getLineCount() > 5;
+            holder.binding.content.setMaxLines(isContentExpandable ? 5 : Integer.MAX_VALUE);
+            holder.binding.expandToggle.setVisibility(isContentExpandable ? View.VISIBLE : View.GONE);
         });
         holder.binding.expandToggle.setOnClickListener(v -> {
-            if (holder.binding.expandToggle.getText().equals("全文")) {
-                holder.binding.content.setMaxLines(Integer.MAX_VALUE);
-                holder.binding.expandToggle.setText("收起");
-            } else {
-                holder.binding.content.setMaxLines(5);
-                holder.binding.expandToggle.setText("全文");
-            }
+            String expandText = holder.itemView.getContext().getString(R.string.expandText);
+            String foldText = holder.itemView.getContext().getString(R.string.foldText);
+            boolean isExpanded = holder.binding.expandToggle.getText().equals(expandText);
+            holder.binding.content.setMaxLines(isExpanded ? Integer.MAX_VALUE : 5);
+            holder.binding.expandToggle.setText(isExpanded ? foldText : expandText);
         });
     }
 

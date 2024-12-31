@@ -11,4 +11,6 @@
     <string name="default_avatar">default_avatar</string>
     <string name="default_username">Lilian</string>
     <string name="user_avatar">user_avatar</string>
+    <string name="expandText">全文</string>
+    <string name="foldText">收起</string>
 </resources>
