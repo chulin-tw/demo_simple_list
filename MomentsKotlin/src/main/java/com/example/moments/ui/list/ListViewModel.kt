@@ -18,7 +18,7 @@ class ListViewModel(private val listRepository: ListRepository) : ViewModel() {
     val error: State<String?> = _error
 
     fun loadItems() {
-        CoroutineScope(viewModelScope.coroutineContext).launch {
+        viewModelScope.launch {
             try {
                 _list.value = listRepository.getList()
             } catch (e: IOException) {
