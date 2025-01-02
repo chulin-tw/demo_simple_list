@@ -4,7 +4,7 @@ import com.example.moments.data.model.ListItem
 import com.example.moments.data.model.MomentInfo
 import com.example.moments.data.model.UserInfo
 
-val MomentItems = listOf(
+val momentItems = listOf(
     ListItem(
         userInfo = UserInfo(
             username = "Alice",

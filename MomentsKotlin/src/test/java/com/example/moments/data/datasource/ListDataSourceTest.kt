@@ -1,6 +1,6 @@
 package com.example.moments.data.datasource
 
-import com.example.moments.MomentItems
+import com.example.moments.momentItems
 import com.example.moments.data.api.ListApiService
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -22,10 +22,10 @@ class ListDataSourceTest {
     @Test
     fun `WHEN api call is successful THEN return list of items`() = runBlocking {
         // Given
-        coEvery { mockListApiService.getList() } returns MomentItems
+        coEvery { mockListApiService.getList() } returns momentItems
         // When
         val result = listDataSource.fetchList()
         // Then
-        assertEquals(result, MomentItems)
+        assertEquals(result, momentItems)
     }
 }

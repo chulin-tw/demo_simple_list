@@ -1,6 +1,6 @@
 package com.example.moments.ui.list
 
-import com.example.moments.MomentItems
+import com.example.moments.momentItems
 import com.example.moments.data.repository.ListRepository
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -31,12 +31,12 @@ class ListViewModelTest {
     @Test
     fun `WHEN loadItems is called THEN should load data`() = runTest {
         // Given
-        coEvery { mockListRepository.getList() } returns MomentItems
+        coEvery { mockListRepository.getList() } returns momentItems
         // When
         listViewModel.loadItems()
         advanceUntilIdle()
         // Then
-        assertEquals(listViewModel.list.value, MomentItems)
+        assertEquals(listViewModel.list.value, momentItems)
     }
 
     @Test

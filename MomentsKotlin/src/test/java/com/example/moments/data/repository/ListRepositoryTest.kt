@@ -1,6 +1,6 @@
 package com.example.moments.data.repository
 
-import com.example.moments.MomentItems
+import com.example.moments.momentItems
 import com.example.moments.data.datasource.ListDataSource
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -22,10 +22,10 @@ class ListRepositoryTest {
     @Test
     fun `WHEN list repository is called THEN should return data`() = runBlocking {
         // Given
-        coEvery { mockListDataSource.fetchList() } returns MomentItems
+        coEvery { mockListDataSource.fetchList() } returns momentItems
         // When
         val result = listRepository.getList()
         // Then
-        assertEquals(MomentItems, result)
+        assertEquals(momentItems, result)
     }
 }
