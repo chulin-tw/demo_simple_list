@@ -9,40 +9,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.momentsjava.R;
 import com.example.momentsjava.data.datasource.ListDataSource;
 import com.example.momentsjava.data.factory.ListViewModelFactory;
 import com.example.momentsjava.data.repository.ListRepository;
+import com.example.momentsjava.databinding.ListFragmentBinding;
 
 public class ListFragment extends Fragment {
     private ListItemAdapter listItemAdapter;
-    private SwipeRefreshLayout swipeRefreshLayout;
-
-    public ListFragment() {
-    }
+    private ListFragmentBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_fragment, container, false);
-        setupRecyclerView(view);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = ListFragmentBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        setupRecyclerView();
         setupViewModel();
-        setupSwipeRefreshLayout(view);
+        setupSwipeRefreshLayout();
         return view;
     }
 
-    private void setupRecyclerView(View rootView) {
-        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        ListItemDivider divider = new ListItemDivider(recyclerView.getContext(), 16);
-        recyclerView.addItemDecoration(divider);
+    private void setupRecyclerView() {
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        ListItemDivider divider = new ListItemDivider(requireContext(), 16);
+        binding.recyclerView.addItemDecoration(divider);
         listItemAdapter = new ListItemAdapter(emptyList());
-        recyclerView.setAdapter(listItemAdapter);
+        binding.recyclerView.setAdapter(listItemAdapter);
     }
 
     private void setupViewModel() {
@@ -52,21 +48,25 @@ public class ListFragment extends Fragment {
         ListViewModel listViewModel = new ViewModelProvider(requireActivity(), factory).get(ListViewModel.class);
         listViewModel.getListItems().observe(getViewLifecycleOwner(), listItems -> {
             listItemAdapter.setListItems(listItems);
-            swipeRefreshLayout.setRefreshing(false);
+            binding.swipeRefreshLayout.setRefreshing(false);
             Log.d("ListFragment", "List items: " + listItems);
         });
         listViewModel.getErrorMessage().observe(getViewLifecycleOwner(), errorMessage -> {
             Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-            swipeRefreshLayout.setRefreshing(false);
+            binding.swipeRefreshLayout.setRefreshing(false);
         });
         listViewModel.fetchListItems();
     }
 
-    private void setupSwipeRefreshLayout(View rootView) {
-        swipeRefreshLayout = rootView.findViewById(R.id.swipeRefreshLayout);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
+    private void setupSwipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener(() -> {
             ListViewModel listViewModel = new ViewModelProvider(requireActivity()).get(ListViewModel.class);
             listViewModel.fetchListItems();
         });
+    }
+
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
