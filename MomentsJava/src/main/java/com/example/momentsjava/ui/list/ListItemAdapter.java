@@ -1,6 +1,7 @@
 package com.example.momentsjava.ui.list;
 
 import android.annotation.SuppressLint;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
 
     private List<ListItem> listItems;
+    private final SparseBooleanArray expandStates = new SparseBooleanArray();
 
     public ListItemAdapter(List<ListItem> listItems) {
         this.listItems = listItems;
@@ -31,7 +33,8 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ListItemViewHolder holder, int position) {
         ListItem listItem = listItems.get(position);
-        holder.bind(listItem);
+        boolean isExpanded = expandStates.get(position, false);
+        holder.bind(listItem, isExpanded, expandStates, position);
     }
 
     @Override

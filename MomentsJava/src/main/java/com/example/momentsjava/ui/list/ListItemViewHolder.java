@@ -1,5 +1,6 @@
 package com.example.momentsjava.ui.list;
 
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,13 +19,15 @@ import java.util.List;
 
 public class ListItemViewHolder extends RecyclerView.ViewHolder {
     private final ListItemViewBinding binding;
+    private boolean isExpanded;
 
     public ListItemViewHolder(@NonNull ListItemViewBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }
 
-    public void bind(ListItem listItem) {
+    public void bind(ListItem listItem, boolean isExpanded, SparseBooleanArray expandStates, int position) {
+        this.isExpanded = isExpanded;
         binding.setListItem(listItem);
         binding.executePendingBindings();
         Glide.with(itemView)
@@ -32,22 +35,31 @@ public class ListItemViewHolder extends RecyclerView.ViewHolder {
                 .transform(new RoundedCorners(12))
                 .into(binding.userAvatar);
         setPictures(listItem.getMomentInfo().getPicture(), binding.pictureContainer, itemView);
-        setExpandableContent();
+        setExpandableContent(expandStates, position);
     }
 
-    private void setExpandableContent() {
+    private void setExpandableContent(SparseBooleanArray expandStates, int position) {
+        String foldText = itemView.getContext().getString(R.string.foldText);
+        String expandText = itemView.getContext().getString(R.string.expandText);
         binding.content.post(() -> {
-            boolean isContentExpandable = binding.content.getLineCount() > 5;
-            binding.content.setMaxLines(isContentExpandable ? 5 : Integer.MAX_VALUE);
-            binding.expandToggle.setVisibility(isContentExpandable ? View.VISIBLE : View.GONE);
+            setToggleVisibility();
+            updateExpandStatus(foldText, expandText);
         });
         binding.expandToggle.setOnClickListener(v -> {
-            String expandText = itemView.getContext().getString(R.string.expandText);
-            String foldText = itemView.getContext().getString(R.string.foldText);
-            boolean isExpanded = binding.expandToggle.getText().equals(expandText);
-            binding.content.setMaxLines(isExpanded ? Integer.MAX_VALUE : 5);
-            binding.expandToggle.setText(isExpanded ? foldText : expandText);
+            this.isExpanded = !this.isExpanded;
+            expandStates.put(position, this.isExpanded);
+            updateExpandStatus(foldText, expandText);
         });
+    }
+
+    private void setToggleVisibility() {
+        boolean isContentExpandable = binding.content.getLineCount() > 5;
+        binding.expandToggle.setVisibility(isContentExpandable ? View.VISIBLE : View.GONE);
+    }
+
+    private void updateExpandStatus(String foldText, String expandText) {
+        binding.content.setMaxLines(isExpanded ? Integer.MAX_VALUE : 5);
+        binding.expandToggle.setText(isExpanded ? foldText : expandText);
     }
 
     private void setPictures(List<String> pictures, LinearLayout picturesContainer, View itemView) {
