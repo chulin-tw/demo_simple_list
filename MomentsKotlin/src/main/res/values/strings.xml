@@ -5,5 +5,7 @@
     <string name="default_avatar_description">default_avatar</string>
     <string name="list_item_user_avatar_description">user_avatar</string>
     <string name="user_pictures_description">user_pictures</string>
+    <string name="foldText">收起</string>
+    <string name="expandText">全文</string>
 
 </resources>

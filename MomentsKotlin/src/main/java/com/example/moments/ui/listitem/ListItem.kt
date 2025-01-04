@@ -1,5 +1,6 @@
 package com.example.moments.ui.listitem
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +10,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -24,7 +29,8 @@ import com.example.moments.R
 private const val AVATAR_SIZE = 30
 private const val ROUND_CORNER_SHAPE = 8
 private const val INFO_OFFSET_X = 38
-private const val FONT_SIZE = 12
+private const val FONT_SIZE = 16
+private const val MAX_SHOW_TEXT = 100
 
 @Composable
 fun ListItem(
@@ -34,6 +40,8 @@ fun ListItem(
     pictures: List<String>,
     modifier: Modifier = Modifier
 ) {
+    var isExpanded by remember { mutableStateOf(false) }
+    val displayText = if (isExpanded) text else text.take(MAX_SHOW_TEXT)
     Box(modifier = modifier.fillMaxSize()) {
         Column {
             AsyncImage(
@@ -56,10 +64,18 @@ fun ListItem(
                 color = colorResource(R.color.username_blue)
             )
             Text(
-                text = text,
+                text = displayText,
                 fontSize = FONT_SIZE.sp,
                 color = Color.Black
             )
+            if (text.length > MAX_SHOW_TEXT) {
+                Text(
+                    text = if (isExpanded) stringResource(R.string.foldText) else stringResource(R.string.expandText),
+                    fontSize = FONT_SIZE.sp,
+                    color = colorResource(R.color.username_blue),
+                    modifier = Modifier.clickable { isExpanded = !isExpanded }
+                )
+            }
             ListItemRow(pictures)
             ListItemBottomRow()
         }
