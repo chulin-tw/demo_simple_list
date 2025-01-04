@@ -40,46 +40,56 @@ fun ListItem(
     pictures: List<String>,
     modifier: Modifier = Modifier
 ) {
-    var isExpanded by remember { mutableStateOf(false) }
-    val displayText = if (isExpanded) text else text.take(MAX_SHOW_TEXT)
     Box(modifier = modifier.fillMaxSize()) {
         Column {
-            AsyncImage(
-                model = avatar,
-                contentDescription = stringResource(R.string.list_item_user_avatar_description),
-                modifier = Modifier
-                    .size(AVATAR_SIZE.dp)
-                    .clip(RoundedCornerShape(ROUND_CORNER_SHAPE.dp))
-            )
+            UserAvatar(avatar)
         }
         Column(
             modifier = Modifier
                 .offset(x = INFO_OFFSET_X.dp)
                 .fillMaxWidth()
         ) {
-            Text(
-                text = userName,
-                fontSize = FONT_SIZE.sp,
-                fontWeight = FontWeight.Bold,
-                color = colorResource(R.color.username_blue)
-            )
-            Text(
-                text = displayText,
-                fontSize = FONT_SIZE.sp,
-                color = Color.Black
-            )
-            if (text.length > MAX_SHOW_TEXT) {
-                Text(
-                    text = if (isExpanded) stringResource(R.string.foldText) else stringResource(R.string.expandText),
-                    fontSize = FONT_SIZE.sp,
-                    color = colorResource(R.color.username_blue),
-                    modifier = Modifier.clickable { isExpanded = !isExpanded }
-                )
-            }
+            UserTextInfo(userName, text)
             ListItemRow(pictures)
             ListItemBottomRow()
         }
     }
+}
+
+@Composable
+private fun UserTextInfo(userName: String, text: String) {
+    var isExpanded by remember { mutableStateOf(false) }
+    val displayText = if (isExpanded) text else text.take(MAX_SHOW_TEXT)
+    Text(
+        text = userName,
+        fontSize = FONT_SIZE.sp,
+        fontWeight = FontWeight.Bold,
+        color = colorResource(R.color.username_blue)
+    )
+    Text(
+        text = displayText,
+        fontSize = FONT_SIZE.sp,
+        color = Color.Black
+    )
+    if (text.length > MAX_SHOW_TEXT) {
+        Text(
+            text = if (isExpanded) stringResource(R.string.foldText) else stringResource(R.string.expandText),
+            fontSize = FONT_SIZE.sp,
+            color = colorResource(R.color.username_blue),
+            modifier = Modifier.clickable { isExpanded = !isExpanded }
+        )
+    }
+}
+
+@Composable
+private fun UserAvatar(avatar: String) {
+    AsyncImage(
+        model = avatar,
+        contentDescription = stringResource(R.string.list_item_user_avatar_description),
+        modifier = Modifier
+            .size(AVATAR_SIZE.dp)
+            .clip(RoundedCornerShape(ROUND_CORNER_SHAPE.dp))
+    )
 }
 
 private const val TEST_PIC = "http://localhost:3022/static/avatar/avatar_01.png"
