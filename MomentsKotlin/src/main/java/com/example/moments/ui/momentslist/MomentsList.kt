@@ -9,6 +9,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -24,13 +25,13 @@ private const val DIVIDER_THICKNESS = 0.5
 @Composable
 fun MomentsList(
     listItems: List<ListItem>,
-    isRefreshing: Boolean = false,
+    isRefreshing: State<Boolean>,
     onRefresh: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val refreshState = rememberPullToRefreshState()
     PullToRefreshBox(
-        isRefreshing = isRefreshing,
+        isRefreshing = isRefreshing.value,
         onRefresh = onRefresh,
         state = refreshState,
         contentAlignment = Alignment.TopStart,

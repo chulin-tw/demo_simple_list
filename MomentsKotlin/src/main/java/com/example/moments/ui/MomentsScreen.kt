@@ -24,7 +24,7 @@ fun MomentsScreen(
     modifier: Modifier = Modifier
 ) {
     val listItems = viewModel.list.value
-    val isLoading = viewModel.loading.value
+    val isLoading = viewModel.loading
     LaunchedEffect(Unit) {
         viewModel.loadItems()
     }
