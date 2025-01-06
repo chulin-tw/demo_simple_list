@@ -42,7 +42,7 @@ public class ListFragment extends Fragment {
     }
 
     private void setupViewModel() {
-        ListDataSource listDataSource = new ListDataSource();
+        ListDataSource listDataSource = new ListDataSource(requireContext());
         ListRepository listRepository = new ListRepository(listDataSource);
         ListViewModelFactory factory = new ListViewModelFactory(listRepository);
         ListViewModel listViewModel = new ViewModelProvider(requireActivity(), factory).get(ListViewModel.class);
