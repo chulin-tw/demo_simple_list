@@ -53,6 +53,7 @@ fun ListItemRow(
     pictures.chunked(3).forEach { rowPictures ->
         Row(modifier = modifier) {
             rowPictures.forEachIndexed { index, pic ->
+                if (pic.isEmpty()) return
                 AsyncImage(
                     model = pic,
                     contentDescription = stringResource(R.string.user_pictures_description),
