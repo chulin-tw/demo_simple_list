@@ -10,14 +10,12 @@ import java.util.concurrent.Executors
 
 class ListRepository(private val listDataSource: ListDataSource) {
     private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
-    suspend fun getList(): List<ListItem> {
-        return withContext(Dispatchers.IO) {
+    fun getList(): List<ListItem> {
             val res = executorService.submit<List<ListItem>> {
                 runBlocking {
                     listDataSource.fetchList()
                 }
             }
-            res.get()
-        }
+           return res.get()
     }
 }
