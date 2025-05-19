@@ -5,12 +5,10 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val DOMAIN_URL = "192.168.31.17"
-
 object ListApiModule {
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://$DOMAIN_URL:3022")
+            .baseUrl("https://demo-list-server.vercel.app/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
