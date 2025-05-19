@@ -33,17 +33,14 @@ public class ListDataSource {
                 .onErrorResumeNext(throwable -> {
                     List<ListItem> cachedList = getListFromPreferences();
                     if (cachedList != null) {
-//                        Log.d("ListDataSource", "Returning cached list items: " + cachedList);
                         return Observable.just(cachedList);
                     } else {
-//                        Log.d("ListDataSource", "Returning error: " + throwable.getMessage());
                         return Observable.error(throwable);
                     }
                 });
     }
 
     private void saveListToPreferences(List<ListItem> listItems) {
-//        Log.d("ListDataSource", "Saving list items to preferences: " + listItems);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(listItems);
