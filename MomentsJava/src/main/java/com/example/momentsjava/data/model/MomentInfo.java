@@ -1,9 +1,11 @@
 package com.example.momentsjava.data.model;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import java.util.List;
 
+@Keep
 public class MomentInfo {
     private String text;
     private List<String> picture;

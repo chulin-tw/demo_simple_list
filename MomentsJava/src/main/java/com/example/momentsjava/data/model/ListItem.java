@@ -1,7 +1,9 @@
 package com.example.momentsjava.data.model;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
+@Keep
 public class ListItem {
     private UserInfo userInfo;
     private MomentInfo momentInfo;
